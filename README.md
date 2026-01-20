@@ -19,4 +19,5 @@ ATCMS is a web-based management system designed to support the operations of an 
 
 ## Notes
 This project focuses on system design, backend logic, and web application workflows.
+Note: This project was developed for academic purposes and may require local environment setup (Java, MySQL, Tomcat) to run.
 
