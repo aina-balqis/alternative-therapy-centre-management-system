@@ -169,7 +169,7 @@ public class AppointmentServlet extends HttpServlet {
     JSONObject jsonResponse = new JSONObject();
 
     try {
-        // Verifikasi session admin
+        // admin sesion verification
         HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("admin") == null) {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
@@ -179,7 +179,7 @@ public class AppointmentServlet extends HttpServlet {
             return;
         }
 
-        // Validasi parameter
+        // parameter verification
         String idParam = request.getParameter("id");
         if (idParam == null || idParam.isEmpty()) {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -191,7 +191,7 @@ public class AppointmentServlet extends HttpServlet {
 
         int appointmentId = Integer.parseInt(idParam);
         
-        // Lakukan penghapusan
+        // delete
         boolean success = appointmentDao.deleteAppointment(appointmentId);
         
         if (success) {
@@ -333,7 +333,7 @@ public class AppointmentServlet extends HttpServlet {
             TherapyPackage therapyPackage = packageDao.getPackageById(packageId);
             Therapist therapist = therapistDao.getTherapistById(therapistId);
             
-            //  Hantar email pending
+            //  send pending email
        EmailUtil.sendPendingEmail(
             client.getClient_email(),
             client.getClient_fullname(),
@@ -521,10 +521,10 @@ int clientId = (int) session.getAttribute("clientId");
        
       int appointmentId = Integer.parseInt(request.getParameter("appointmentId"));
 
-// Ambil appointment dulu
+// get appointment first
 Appointment appt = appointmentDao.getAppointmentById(appointmentId);
 
-// Pastikan appointment wujud
+// make sure appointment wujud
 if (appt != null) {
     int clientId = appt.getClientId();
     Client client = clientDao.getClientById(clientId);
@@ -543,7 +543,7 @@ if (appt != null) {
     }
 
     //guna nanti
-//direct ke form untuk reschedule
+//direct to form for reschedule
     private void showRescheduleForm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
@@ -557,7 +557,7 @@ if (appt != null) {
             int appointmentId = Integer.parseInt(request.getParameter("appointmentId"));
             int clientId = (int) session.getAttribute("clientId");
 
-            // Log permintaan reschedule
+            // Log  reschedule request
             logger.info("Attempting to reschedule appointment ID: " + appointmentId + " for client ID: " + clientId);
 
             Appointment appointment = appointmentDao.getAppointmentById(appointmentId);
@@ -582,7 +582,7 @@ if (appt != null) {
                 return;
             }
 
-            // Log sebelum forward ke halaman reschedule
+            // Log beefore forward forward to reschedule page
             logger.info("Loading reschedule form for appointment ID: " + appointmentId);
 
             TherapyPackage therapyPackage = packageDao.getPackageById(appointment.getPackageId());
@@ -739,7 +739,7 @@ if (appt != null) {
         int appointmentId = Integer.parseInt(request.getParameter("appointmentId"));
         String dateStr = request.getParameter("date");
 
-        // Validasi appointment
+        // Validate appointment
         Appointment appointment = appointmentDao.getAppointmentById(appointmentId);
         if (appointment == null || 
             (!"Confirmed".equals(appointment.getAppointmentStatus()) && 
@@ -787,7 +787,7 @@ if (appt != null) {
     int appointmentId = Integer.parseInt(request.getParameter("appointmentId"));
     String reason = request.getParameter("reason");
 
-    // Dapatkan appointment
+    // get appointment
     Appointment appt = appointmentDao.getAppointmentById(appointmentId);
     if (appt != null) {
         int clientId = appt.getClientId();
@@ -885,7 +885,7 @@ if (appt != null) {
     String refundMethod = request.getParameter("refundMethod");
     String refundNotes = request.getParameter("refundNotes");
 
-    // Dapatkan appointment
+    // get appointment
     Appointment appt = appointmentDao.getAppointmentById(appointmentId);
     if (appt != null) {
         int clientId = appt.getClientId();
@@ -1017,3 +1017,4 @@ protected void bookMultiple(HttpServletRequest request, HttpServletResponse resp
     }
 }
 }
+
