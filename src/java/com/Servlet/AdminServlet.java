@@ -39,14 +39,14 @@ public class AdminServlet extends HttpServlet {
                     break;
                     
                 case "updateTherapist":
-                case "updateProfile": // Untuk kompatibilitas
+                case "updateProfile": 
                     if ("therapist".equals(role)) {
                         handleUpdateTherapist(request, response);
                     }
                     break;
                     
                 default:
-                    // Handle login jika tidak ada action
+                    // Handle login if no action
                     if (action == null && role == null) {
                         handleLogin(request, response);
                     } else {
@@ -107,7 +107,7 @@ public class AdminServlet extends HttpServlet {
         session.setAttribute("admin", admin);
         session.setMaxInactiveInterval(30 * 60);
 
-        // 🔥 Tambah auto-cancel appointment di sini
+        // auto-cancel appointment
         try {
             com.Dao.AppointmentDao dao = new com.Dao.AppointmentDao();
             dao.autoCancelUnpaidAppointments();
@@ -237,4 +237,5 @@ public class AdminServlet extends HttpServlet {
             request.getRequestDispatcher("admin-edit-therapist.jsp").forward(request, response);
         }
     }
+
 }
