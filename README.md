@@ -77,14 +77,17 @@ The model layer represents real-world entities within an alternative therapy cen
 
 - **Download / Clone the project**
   Download the repository as a ZIP file and extract it.
+  
 - **Import the project into IDE**
-  Open the project using NetBeans / IntelliJ / Eclipse as a Java Web Application.
+   Open the project using NetBeans / IntelliJ / Eclipse as a Java Web Application.
   Configure Apache Tomcat as the server.
+  
 - **Database setup**
   Create a MySQL database (atcms).
   Import the provided SQL file into the database.
   Update database configuration
   Update the database connection settings (URL, username, password) in the project to match your local MySQL setup.
+  
 - **Run the application**
   Start the Tomcat server.
   Access the system via browser:
