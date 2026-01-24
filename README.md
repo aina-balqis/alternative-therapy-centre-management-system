@@ -78,4 +78,6 @@ The model layer represents real-world entities within an alternative therapy cen
 ---
 
 ## Notes
-This project was developed for academic purposes. Running the system locally requires Java, MySQL, and a servlet container such as Apache Tomcat.
+This project was developed as part of an academic program and demonstrates a complete web-based system implementation. Running the system locally requires Java, MySQL, and a servlet container such as Apache Tomcat.
+
+When running the application locally, users should start from the landing page (`LoginChoice.jsp`), which serves as the entry point before authentication.
