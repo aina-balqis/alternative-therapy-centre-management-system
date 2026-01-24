@@ -73,11 +73,27 @@ The model layer represents real-world entities within an alternative therapy cen
 - **Architecture**: MVC, DAO Pattern  
 
 ---
+## How to Run the Project (ATCMS)
 
+- **Download / Clone the project**
+  Download the repository as a ZIP file and extract it.
+- **Import the project into IDE**
+  Open the project using NetBeans / IntelliJ / Eclipse as a Java Web Application.
+  Configure Apache Tomcat as the server.
+- **Database setup**
+  Create a MySQL database (atcms).
+  Import the provided SQL file into the database.
+  Update database configuration
+  Update the database connection settings (URL, username, password) in the project to match your local MySQL setup.
+- **Run the application**
+  Start the Tomcat server.
+  Access the system via browser:
+  http://localhost:8080/ATCMS3/
+  When running the application locally, users should start from the landing page (`LoginChoice.jsp`), which serves as the entry point before authentication.
 
 ---
 
 ## Notes
 This project was developed as part of an academic program and demonstrates a complete web-based system implementation. Running the system locally requires Java, MySQL, and a servlet container such as Apache Tomcat.
 
-When running the application locally, users should start from the landing page (`LoginChoice.jsp`), which serves as the entry point before authentication.
+
